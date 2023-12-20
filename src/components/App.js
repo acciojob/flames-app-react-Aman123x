@@ -14,9 +14,10 @@ const App=()=> {
 
         if(name1.trim()==="" || name2.trim()===""){
             setRelationship("Please Enter valid input");
+            return;
         }
 
-        else{
+    
             let str1=name1;
             let str2=name2;
 
@@ -30,18 +31,17 @@ const App=()=> {
             setName2(str2);
 
             setRelationship(arr[(str1.length+str2.length)%6]);
-        }
     }
 
 
     return(
         <div id="main">
             <form>
-                <input type="text" data-testid="input1" 
+                <input type="text" data-testid="input1" name="name1" 
                   onChange={(e)=>setName1(e.target.value)}
                   value={name1}
                  />
-                <input type="text" data-testid="input2" onChange={(e)=>setName2(e.target.value)}/>
+                <input type="text" data-testid="input2" name="name2" onChange={(e)=>setName2(e.target.value)}/>
                 <button data-testid="calculate_relationship" type="submit" 
                 value={name2}
                     onClick={calculateRelationship}
@@ -51,6 +51,7 @@ const App=()=> {
                         ()=>{
                             setName1="";
                             setName2="";
+                            setRelationship("");
                         }
                     }
                 >Clear</button>
