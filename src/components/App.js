@@ -11,19 +11,26 @@ const App=()=> {
 
     function calculateRelationship(e){
         e.preventDefault();
-        let str1=name1;
-        let str2=name2;
 
-        for(let t of str1){
-            if(str2.includes(t)){
-                str1=str1.replace(t,"");
-                str2=str2.replace(t,"");
-            }
+        if(name1.trim()==="" || name2.trim()===""){
+            setRelationship("Please Enter valid input");
         }
-        setName1(str1);
-        setName2(str2);
 
-        setRelationship(arr[(str1.length+str2.length)%6]);
+        else{
+            let str1=name1;
+            let str2=name2;
+
+            for(let t of str1){
+                if(str2.includes(t)){
+                    str1=str1.replace(t,"");
+                    str2=str2.replace(t,"");
+                }
+            }
+            setName1(str1);
+            setName2(str2);
+
+            setRelationship(arr[(str1.length+str2.length)%6]);
+        }
     }
 
 
